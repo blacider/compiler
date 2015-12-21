@@ -12,9 +12,40 @@
 class Parser {
 private:
     vector<Token> tokens;
+    int look, end;
+    //parser
+    void move();
+    void match(Type);
+    //aql
+    void aql_stmt();
+    void create_stmt();
+    void output_stmt();
+    void view_stmt();
+    void select_stmt();
+    void extract_stmt();
+    void alias();
+    //Select Statement
+    void select_list();
+    void from_list();
+    void select_item();
+    void from_item();
+    //Extract Statement--regular
+    void extract_spec();
+    void regex_spec();
+    void column();
+    void name_spec();
+    void group_spec();
+    void single_group();
+    //Extract Statement--pattern
+    void pattern_spec();
+    void pattern_expr();
+    void pattern_pkg();
+    void atom();
+    void pattern_group();
 public:
-    Parser(string path);
+    Parser(string);
     void error(string);
+    void program();
 };
 
 #endif /* Parser_h */
