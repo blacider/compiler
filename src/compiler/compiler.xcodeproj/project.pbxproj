@@ -10,6 +10,8 @@
 		A0F3A8C31C27057E0003E78E /* Lexer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0F3A8C21C27057E0003E78E /* Lexer.cpp */; };
 		A0F3A8C61C27061C0003E78E /* Tokenizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0F3A8C41C27061C0003E78E /* Tokenizer.cpp */; };
 		A0F3A8CC1C2803F70003E78E /* testLexer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0F3A8CB1C2803F70003E78E /* testLexer.cpp */; };
+		A0F3A8CE1C2808140003E78E /* regex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0F3A8CD1C2808140003E78E /* regex.cpp */; };
+		A0F3A8D01C28193C0003E78E /* Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0F3A8CF1C28193C0003E78E /* Parser.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +33,9 @@
 		A0F3A8C41C27061C0003E78E /* Tokenizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tokenizer.cpp; sourceTree = "<group>"; };
 		A0F3A8C51C27061C0003E78E /* Tokenizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tokenizer.h; sourceTree = "<group>"; };
 		A0F3A8CB1C2803F70003E78E /* testLexer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testLexer.cpp; sourceTree = "<group>"; };
+		A0F3A8CD1C2808140003E78E /* regex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = regex.cpp; sourceTree = "<group>"; };
+		A0F3A8CF1C28193C0003E78E /* Parser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Parser.cpp; sourceTree = "<group>"; };
+		A0F3A8D11C28194D0003E78E /* Parser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +68,9 @@
 		A0F3A8B91C26E8850003E78E /* compiler */ = {
 			isa = PBXGroup;
 			children = (
+				A0F3A8CD1C2808140003E78E /* regex.cpp */,
+				A0F3A8CF1C28193C0003E78E /* Parser.cpp */,
+				A0F3A8D11C28194D0003E78E /* Parser.h */,
 				A0F3A8C11C26FC790003E78E /* Lexer.h */,
 				A0F3A8C41C27061C0003E78E /* Tokenizer.cpp */,
 				A0F3A8CB1C2803F70003E78E /* testLexer.cpp */,
@@ -128,7 +136,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0F3A8D01C28193C0003E78E /* Parser.cpp in Sources */,
 				A0F3A8C61C27061C0003E78E /* Tokenizer.cpp in Sources */,
+				A0F3A8CE1C2808140003E78E /* regex.cpp in Sources */,
 				A0F3A8CC1C2803F70003E78E /* testLexer.cpp in Sources */,
 				A0F3A8C31C27057E0003E78E /* Lexer.cpp in Sources */,
 			);
