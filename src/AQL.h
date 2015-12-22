@@ -66,7 +66,8 @@ public:
                        string text);
     void extract_pattern(vector<Atom> atoms,
                          vector<int> groups,
-                         vector<string> columns_names);
+                         vector<string> columns_names，
+                         vector<Text_token> tokens);
     void select(vector<Column> columns,
                 vector<string> column_names);
 	
