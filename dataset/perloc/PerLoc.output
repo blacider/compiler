@@ -1,9 +1,9 @@
 Processing PerLoc.input
 View: Cap
 +----------------------+
-| Cap                  |
+| Cap                  |Col
 +----------------------+
-| Carter:(0,6)         |
+| Carter:(0,6)         |C(0,1)
 | Plains:(12,18)       |
 | Georgia:(20,27)      |
 | Washington:(29,39)   |
