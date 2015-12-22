@@ -101,6 +101,7 @@ int main() {
 //    
 //    pl.extract_pattern(atoms,
 //                            groups_,
-//                            names);
+//                            names,
+//                            text_tokens);
 //    pl.output("");
 }
