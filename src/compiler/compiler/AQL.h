@@ -25,8 +25,14 @@ struct Span {
 struct Column {
     string name;
     vector<Span> spans;
-    Column(string n) {
+    Column(string n = "") {
         name = n;
+    }
+    Column& operator=(const Column& c)//重载运算符
+    {
+        name = c.name;
+        spans = c.spans;
+        return *this;
     }
 };
 typedef enum{
@@ -34,9 +40,17 @@ typedef enum{
 } Type_Atom;
 struct Atom {
     Column column;
-    int interval;
+    int interval_from;
+    int interval_to;
     Type_Atom type;
-    bool ifCapture;
+    string regex;
+    Atom(Type_Atom t, int from, int to, string r, Column c) {
+        type = t;
+        interval_from = from;
+        interval_to = to;
+        regex = r;
+        column = c;
+    }
 };
 class View {
 private:
