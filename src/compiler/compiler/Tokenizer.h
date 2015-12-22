@@ -30,6 +30,7 @@ private:
 public:
     Tokenizer(string);
     vector<Text_token> scan();
+    string text;
 };
 
 #endif /* Tokenizer_h */

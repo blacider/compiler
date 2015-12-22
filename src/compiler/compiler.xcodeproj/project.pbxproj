@@ -11,7 +11,8 @@
 		A0F3A8C61C27061C0003E78E /* Tokenizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0F3A8C41C27061C0003E78E /* Tokenizer.cpp */; };
 		A0F3A8D01C28193C0003E78E /* Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0F3A8CF1C28193C0003E78E /* Parser.cpp */; };
 		A0F3A8D41C283DC20003E78E /* AQL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0F3A8D31C283DC20003E78E /* AQL.cpp */; };
-		A0F3A8D61C2840F60003E78E /* testParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0F3A8D51C2840F60003E78E /* testParser.cpp */; };
+		A0F3A8F11C29185B0003E78E /* testAQL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0F3A8F01C29185B0003E78E /* testAQL.cpp */; };
+		A0F3A8F31C291F840003E78E /* regex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0F3A8F21C291F840003E78E /* regex.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,7 +37,8 @@
 		A0F3A8D11C28194D0003E78E /* Parser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
 		A0F3A8D21C2831970003E78E /* AQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AQL.h; sourceTree = "<group>"; };
 		A0F3A8D31C283DC20003E78E /* AQL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AQL.cpp; sourceTree = "<group>"; };
-		A0F3A8D51C2840F60003E78E /* testParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testParser.cpp; sourceTree = "<group>"; };
+		A0F3A8F01C29185B0003E78E /* testAQL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testAQL.cpp; sourceTree = "<group>"; };
+		A0F3A8F21C291F840003E78E /* regex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = regex.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,8 +71,9 @@
 		A0F3A8B91C26E8850003E78E /* compiler */ = {
 			isa = PBXGroup;
 			children = (
+				A0F3A8F21C291F840003E78E /* regex.cpp */,
+				A0F3A8F01C29185B0003E78E /* testAQL.cpp */,
 				A0F3A8CF1C28193C0003E78E /* Parser.cpp */,
-				A0F3A8D51C2840F60003E78E /* testParser.cpp */,
 				A0F3A8D11C28194D0003E78E /* Parser.h */,
 				A0F3A8D21C2831970003E78E /* AQL.h */,
 				A0F3A8D31C283DC20003E78E /* AQL.cpp */,
@@ -139,9 +142,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0F3A8D41C283DC20003E78E /* AQL.cpp in Sources */,
+				A0F3A8F31C291F840003E78E /* regex.cpp in Sources */,
 				A0F3A8D01C28193C0003E78E /* Parser.cpp in Sources */,
 				A0F3A8C61C27061C0003E78E /* Tokenizer.cpp in Sources */,
-				A0F3A8D61C2840F60003E78E /* testParser.cpp in Sources */,
+				A0F3A8F11C29185B0003E78E /* testAQL.cpp in Sources */,
 				A0F3A8C31C27057E0003E78E /* Lexer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

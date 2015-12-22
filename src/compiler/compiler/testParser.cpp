@@ -12,8 +12,8 @@
 using namespace std;
 
 int main(int argc, const char * argv[]) {
-    Parser parser("../dataset/Revenue.aql");
-    //Parser parser("../dataset/PerLoc.aql");
+    //Parser parser("../dataset/Revenue.aql");
+    Parser parser("../dataset/PerLoc.aql");
     parser.program();
     return 0;
 }

@@ -25,24 +25,35 @@ struct Span {
 struct Column {
     string name;
     vector<Span> spans;
+    Column(string n) {
+        name = n;
+    }
 };
-
+typedef enum{
+    REG, COLUMN
+} Type_Atom;
+struct Atom {
+    Column column;
+    int interval;
+    Type_Atom type;
+    bool ifCapture;
+};
 class View {
 private:
     string name;
-    vector<Column> columns;
 public:
-    View(string);
-    void output();
+    vector<Column> columns;
+    View(string name);
+    void output(string);
     void extract_regex(string regex,
                        vector<int> groups,
                        vector<string> column_names,
-                       string path);
-    void extract_pattern();
-    void select(vector<View> from_list,
-                vector<string> column_names_from,
+                       string text);
+    void extract_pattern(vector<Atom> atoms,
+                         vector<int> groups,
+                         vector<string> columns_names);
+    void select(vector<Column> columns,
                 vector<string> column_names);
-    void output(string name = "");
 };
 
 

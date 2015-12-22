@@ -488,6 +488,8 @@ single()
     } else {
         yyerror("single");
     }
+    State *s = ccstate(CharClass, yylval.range, NULL, NULL);
+    return frag(s, list1(&s->out));
 }
 
 void
@@ -817,9 +819,9 @@ findall(const char *regex, const char *content) {
 
 //int main()
 //{
-//    char regex[] = "([a-z]+)([^a-z]+)";
-//    char content[] = "ab2c1def3g12ui";
-//    vector<vector<int>> result;
+//    char regex[] = "[A-Z][a-z]* *, *Washington|Georgia|Virginia";
+//    char content[] = "Carter from Plains, Georgia, Washington from Westmoreland, Virginia";
+//    vector<vector<int> > result;
 //    result = findall(regex, content);
 //    for (int i=0; i<result.size(); i++) {
 //        for (int j=result[i][0]; j<result[i][1]; j++)

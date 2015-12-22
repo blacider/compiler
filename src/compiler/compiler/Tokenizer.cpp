@@ -23,6 +23,7 @@ vector<Text_token> Tokenizer::scan() {
     string str;
     int pos = 0;
     while ((tmp = fgetc(file)) != EOF) {
+        text += tmp;
         if (isBlock(tmp)) {
             if (str.length() != 0) {
                 tokens.push_back(Text_token(str, pos-(int)str.length(), pos));
