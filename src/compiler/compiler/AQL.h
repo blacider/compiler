@@ -41,6 +41,7 @@ struct Atom {
 class View {
 private:
     string name;
+	void output_frame(int columnsSize, vector<int> longestEachCol);
 public:
     vector<Column> columns;
     View(string name);
@@ -54,6 +55,7 @@ public:
                          vector<string> columns_names);
     void select(vector<Column> columns,
                 vector<string> column_names);
+	
 };
 
 

@@ -14,7 +14,9 @@ Tokenizer::Tokenizer(string path_) {
     path = path_;
 }
 vector<Text_token> Tokenizer::scan() {
-    FILE *file = fopen(path.c_str(), "r");
+	FILE *file;
+	errno_t err;
+	err = fopen_s(&file, "PerLoc.input", "r");
     if (file == NULL) {
         cout << "error, wrong path" << endl;
         return tokens;
