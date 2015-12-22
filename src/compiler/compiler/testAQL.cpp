@@ -14,7 +14,7 @@
 
 int main() {
     //tokennizer
-    Tokenizer tokenizer("PerLoc.input");
+    Tokenizer tokenizer("../dataset/perloc/PerLoc.input");
     vector<Text_token> text_tokens = tokenizer.scan();
     //测试 extract_regex
     /*
@@ -45,7 +45,7 @@ int main() {
     groups.push_back(0);
     column_names.clear();
     column_names.push_back("loc");
-    cap.extract_regex("Washington|Georgia|Virginia",
+    loc.extract_regex("Washington|Georgia|Virginia",
                       groups,
                       column_names,
                       text);
@@ -60,10 +60,9 @@ int main() {
     vector<string> column_names2;
     column_names2.push_back("col1");
     vector<Column> columns2;
-    columns2.push_back(cap.columns[1]);
+    columns2.push_back(cap.columns[0]);
     perloc.select(columns2, column_names2);
 	perloc.output("");
-	return 0;
     //测试 extract_pattern
     /*
      create view pl as
@@ -73,35 +72,35 @@ int main() {
      and group 2 as stt
      from cat c, loc l;
      */
-    View pl("pl");
-    vector<Atom> atoms;
-    atoms.push_back(Atom(
-                         COLUMN,
-                         0,
-                         0,
-                         "",
-                         cap.columns[0]
-                    ));
-    atoms.push_back(Atom(
-                         REG,
-                         0,
-                         0,
-                         ",",
-                         Column()
-                         ));
-    atoms.push_back(Atom(
-                         COLUMN,
-                         0,
-                         0,
-                         "",
-                         loc.columns[0]
-                         ));
-    vector<int> groups_;
-    vector<string> names;
-    groups.push_back(0);
-    
-    pl.extract_pattern(atoms,
-                            groups_,
-                            names);
-    pl.output("");
+//    View pl("pl");
+//    vector<Atom> atoms;
+//    atoms.push_back(Atom(
+//                         COLUMN,
+//                         0,
+//                         0,
+//                         "",
+//                         cap.columns[0]
+//                    ));
+//    atoms.push_back(Atom(
+//                         REG,
+//                         0,
+//                         0,
+//                         ",",
+//                         Column()
+//                         ));
+//    atoms.push_back(Atom(
+//                         COLUMN,
+//                         0,
+//                         0,
+//                         "",
+//                         loc.columns[0]
+//                         ));
+//    vector<int> groups_;
+//    vector<string> names;
+//    groups.push_back(0);
+//    
+//    pl.extract_pattern(atoms,
+//                            groups_,
+//                            names);
+//    pl.output("");
 }

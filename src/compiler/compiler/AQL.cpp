@@ -22,7 +22,7 @@ void View::output(string x) {
 	}
 	vector<int> longestEachCol;
 	//pre-process
-	int columnsSize = columns.size();
+	int columnsSize = (int)columns.size();
 	int i = 0;
 	int row = 0;
 	bool finish = false;
@@ -76,7 +76,7 @@ void View::output(string x) {
 	row = 0;
 	int rowSize;
 	if (columnsSize > 0) {
-		rowSize = columns[0].spans.size();
+		rowSize = (int)columns[0].spans.size();
 	}
 	while (row < rowSize) {
 		i = 0;
