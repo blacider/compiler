@@ -14,7 +14,7 @@
 
 int main() {
     //tokennizer
-    Tokenizer tokenizer("../dataset/perloc/PerLoc.input");
+    Tokenizer tokenizer("PerLoc.input");
     vector<Text_token> text_tokens = tokenizer.scan();
     //测试 extract_regex
     /*
@@ -62,6 +62,8 @@ int main() {
     vector<Column> columns2;
     columns2.push_back(cap.columns[1]);
     perloc.select(columns2, column_names2);
+	perloc.output("");
+	return 0;
     //测试 extract_pattern
     /*
      create view pl as
