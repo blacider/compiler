@@ -6,8 +6,9 @@
 //  Copyright © 2015年 牛仁鹏. All rights reserved.
 //
 
-#include <stdio.h>
+#include <cstdio>
 #include <iostream>
+#include <cstdlib>
 #include "Parser.h"
 #include "AQL.h"
 #include<map>
