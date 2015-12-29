@@ -56,12 +56,14 @@ class View {
 private:
     string name;
 	void output_frame(int columnsSize, vector<int> longestEachCol);
+    unsigned query(const std::vector<Text_token> &, const unsigned &);
     void dfs(
         const std::vector<Atom>::const_iterator &,
         const std::vector<Atom>::const_iterator &,
         std::vector<Span> &,
         const std::vector<int> &,
-        std::vector<Column> &
+        std::vector<Column> &,
+        const std::vector<Text_token> &
     );
 public:
     vector<Column> columns;
@@ -74,7 +76,7 @@ public:
     void extract_pattern(const vector<Atom> & atoms,
                          const vector<int> & groups,
                          const vector<string> & column_names,
-                         const vector<Text_token> & tokens,
+                         const vector<Text_token> &,
                          const string & text);
     void select(vector<Column> columns,
                 vector<string> column_names);
