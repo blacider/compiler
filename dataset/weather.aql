@@ -1,0 +1,25 @@
+create view Number as
+    extract regex /[0-9]+(\.[0-9])?/
+        on D.text as Number
+    from Document D;
+
+create view Unit as
+    extract regex /people|miles|kph|km|mile/
+        on D.text as Unit
+    from Document D;
+
+create view Location as
+    extract regex /United States|Texas|Arkansas|Louisiana|Oklahoma|Mississippi|Illinois|Garland/
+        on D.text as Location
+    from Document D;
+
+create view Data as
+    extract pattern (<N.Number>) <Token>{0,2} (<U.Uint>)
+        return group 0 as Data
+           and group 1 as Number
+           and group 2 as Unit
+    from Number N,Unit U;
+
+create view DataOnly as
+    select DA.Data as Data
+    from Data DA;
