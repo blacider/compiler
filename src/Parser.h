@@ -11,6 +11,7 @@
 #include "Lexer.h"
 class Parser {
 private:
+    map<string, View> views;
     vector<Token> tokens;
     int look, end;
     //parser

@@ -9,6 +9,8 @@
 #include <stdio.h>
 #include <iostream>
 #include "Parser.h"
+#include "AQL.h"
+#include<map>
 Parser::Parser(string path) {
     Lexer lexer(path);
     tokens = lexer.scan();
@@ -52,6 +54,7 @@ void Parser::create_stmt() {
     view_stmt();
     match(SEMICOLON);
     // TODO create
+    views.push_back();
 }
 void Parser::view_stmt() {
     if (tokens[look].type == SELECT) {
