@@ -72,36 +72,39 @@ int main() {
      and group 2 as stt
      from cat c, loc l;
      */
-//    View pl("pl");
-//    vector<Atom> atoms;
-//    atoms.push_back(Atom(
-//                         COLUMN,
-//                         0,
-//                         0,
-//                         "",
-//                         cap.columns[0]
-//                    ));
-//    atoms.push_back(Atom(
-//                         REG,
-//                         0,
-//                         0,
-//                         ",",
-//                         Column()
-//                         ));
-//    atoms.push_back(Atom(
-//                         COLUMN,
-//                         0,
-//                         0,
-//                         "",
-//                         loc.columns[0]
-//                         ));
-//    vector<int> groups_;
-//    vector<string> names;
-//    groups.push_back(0);
-//    
-//    pl.extract_pattern(atoms,
-//                            groups_,
-//                            names,
-//                            text_tokens);
-//    pl.output("");
+    View pl("pl");
+    vector<Atom> atoms;
+    atoms.push_back(Atom(
+                         COLUMN,
+                         0,
+                         0,
+                         "",
+                         cap.columns[0]
+                    ));
+    atoms.push_back(Atom(
+                         REG,
+                         0,
+                         0,
+                         ",",
+                         Column()
+                         ));
+    atoms.push_back(Atom(
+                         COLUMN,
+                         0,
+                         0,
+                         "",
+                         loc.columns[0]
+                        ));
+    vector<int> groups_;
+    vector<string> names(1, "123");
+    groups_.push_back(0);
+    groups_.push_back(atoms.size());
+    
+    pl.extract_pattern(atoms,
+                            groups_,
+                            names,
+                            text_tokens,
+                            text
+                            );
+    pl.output("");
 }

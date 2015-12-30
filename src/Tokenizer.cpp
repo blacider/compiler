@@ -10,6 +10,7 @@
 #include <fstream>
 #include <cstdio>
 #include <iostream>
+#include <cstdlib>
 Tokenizer::Tokenizer(string path_) {
     path = path_;
 }
