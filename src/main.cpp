@@ -10,9 +10,10 @@
 #include "Tokenizer.h"
 #include "Parser.h"
 int main() {
-    //Parser parser("dataset/Revenue.aql");
-    Tokenizer tokenizer("../dataset/perloc/PerLoc.input");
-    Parser parser("../dataset/PerLoc.aql", tokenizer);
+    Tokenizer tokenizer("../dataset/revenue/Revenue.input");
+    Parser parser("../dataset/Revenue.aql", tokenizer);
+    //Tokenizer tokenizer("../dataset/perloc/PerLoc.input");
+    //Parser parser("../dataset/PerLoc.aql", tokenizer);
     parser.program();
     return 0;
 }
