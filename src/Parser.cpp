@@ -148,6 +148,7 @@ void Parser::from_item() {
     match(ID);
 }
 void Parser::extract_stmt(string id) {
+    groups_paren.clear();
     match(EXTRACT);
     atoms.clear();
     bool ifPattern = true;
