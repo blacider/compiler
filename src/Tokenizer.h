@@ -24,11 +24,12 @@ struct Text_token {
 
 class Tokenizer {
 private:
+    bool isAQL;
     vector<Text_token> tokens;
     string path;
     bool isBlock(char c); // 判断是否非数字也非字母
 public:
-    Tokenizer(string);
+    Tokenizer(string, bool);
     vector<Text_token> scan();
     string text;
 };
