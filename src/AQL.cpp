@@ -30,7 +30,7 @@ void View::output(string x) {
 	int row = 0;
 	bool finish = false;
 	while (i < columnsSize) {
-		longestEachCol.push_back(0);
+		longestEachCol.push_back(columns[i].name.size());
 		i++;
 	}
 	while (!finish) {
