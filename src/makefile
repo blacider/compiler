@@ -1,6 +1,6 @@
 testAll: testAQL testTokenizer testLexer main
 main:main.cpp Tokenizer.cpp Lexer.cpp Parser.cpp AQL.cpp regex.cpp
-	g++ -g main.cpp Tokenizer.cpp Lexer.cpp Parser.cpp AQL.cpp regex.cpp -o main.o
+	g++ main.cpp Tokenizer.cpp Lexer.cpp Parser.cpp AQL.cpp regex.cpp -o main.o
 testTokenizer:testTokenizer.cpp Tokenizer.cpp
 	g++ testTokenizer.cpp Tokenizer.cpp -o testTokenizer.o
 testLexer:testLexer.cpp Lexer.cpp Tokenizer.cpp
