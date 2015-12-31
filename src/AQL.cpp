@@ -226,7 +226,7 @@ void View::dfs(
                 newCols[i].spans.back().value += deque[j].value;
         }
     } else {
-        unsigned p, q;
+        unsigned p, q, n;
         if (!deque.empty())
             q = query(tokens, deque.back().to - 1);
         for (
@@ -240,9 +240,19 @@ void View::dfs(
                 || p - q > (now - 1)->interval_from
                 && p - q - 1 <= (now - 1)->interval_to
                 ) {
+                if (deque.empty())
+                    n = 0;
+                else
+                    n = p - q - 1;
+                for (unsigned j = q; j < p; ++j)
+                    deque.push_back(
+                        Span(tokens[j].value, tokens[j].from, tokens[j].to)
+                    );
                 deque.push_back(*i);
                 dfs(now + 1, end, deque, groups, newCols, tokens);
                 deque.pop_back();
+                while (n-- > 0)
+                    deque.pop_back();
             }
         }
     }
