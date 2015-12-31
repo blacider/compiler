@@ -214,6 +214,7 @@ void View::dfs(
                const std::vector<Text_token> & tokens
                ) {
     if (now == end) {
+        unsigned p, q, k;
         for (unsigned i = 0; i < newCols.size(); ++i) {
             newCols[i].spans.push_back(
                                        Span(
@@ -222,11 +223,18 @@ void View::dfs(
                                             deque[groups[(i << 1) + 1] - 1].to
                                             )
                                        );
-            for (unsigned j = groups[i << 1]; j < groups[(i << 1) + 1]; ++j)
+            for (unsigned j = groups[i << 1]; j < groups[(i << 1) + 1]; ++j) {
+                if (j > groups[i << 1]) {
+                    q = query(tokens, deque[j-1].to - 1);
+                    p = query(tokens, deque[j].from);
+                    for (k = q + 1; k < p; ++k)
+                        newCols[i].spans.back().value += tokens[k].value;
+                }
                 newCols[i].spans.back().value += deque[j].value;
+            }
         }
     } else {
-        unsigned p, q, n;
+        unsigned p, q;
         if (!deque.empty())
             q = query(tokens, deque.back().to - 1);
         for (
@@ -240,19 +248,9 @@ void View::dfs(
                 || p - q > (now - 1)->interval_from
                 && p - q - 1 <= (now - 1)->interval_to
                 ) {
-                if (deque.empty())
-                    n = 0;
-                else
-                    n = p - q - 1;
-                for (unsigned j = q + 1; j < p; ++j)
-                    deque.push_back(
-                        Span(tokens[j].value, tokens[j].from, tokens[j].to)
-                    );
                 deque.push_back(*i);
                 dfs(now + 1, end, deque, groups, newCols, tokens);
                 deque.pop_back();
-                while (n-- > 0)
-                    deque.pop_back();
             }
         }
     }
