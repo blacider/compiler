@@ -46,7 +46,6 @@ void Parser::program() {
     while (look != end-1) {
         aql_stmt();
     }
-    cout << "success" << endl;
 }
 void Parser::aql_stmt() {
     if (tokens[look].type == CREATE) {
