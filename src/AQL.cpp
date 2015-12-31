@@ -244,7 +244,7 @@ void View::dfs(
                     n = 0;
                 else
                     n = p - q - 1;
-                for (unsigned j = q; j < p; ++j)
+                for (unsigned j = q + 1; j < p; ++j)
                     deque.push_back(
                         Span(tokens[j].value, tokens[j].from, tokens[j].to)
                     );
