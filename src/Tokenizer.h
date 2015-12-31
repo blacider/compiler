@@ -1,37 +1,33 @@
-//
-//  Tokenizer.hpp
-//  compiler
-//
-//  Created by 牛仁鹏 on 15/12/20.
-//  Copyright © 2015年 牛仁鹏. All rights reserved.
-//
-
-#ifndef Tokenizer_h
-#define Tokenizer_h
+#pragma once
 
 #include <string>
 #include <vector>
-using namespace std;
+
 struct Text_token {
     int from, to;
-    string value;
-    Text_token(string s, int f, int t) {
-        value = s;
-        from = f;
-        to = t;
-    }
+    std::string value;
+    Text_token(const std::string & s, const int & f, const int & t) :
+        value(s), from(f), to(t) { }
 };
 
 class Tokenizer {
 private:
     bool isAQL;
-    vector<Text_token> tokens;
-    string path;
-    bool isBlock(char c); // 判断是否非数字也非字母
+    std::vector<Text_token> tokens;
+    std::string path, text;
+    inline bool isBlock(const char & c) {
+        return !(((c >= 'a' && c <= 'z')  ||
+                (c >= 'A' && c <= 'Z')) ||
+                (c >= '0' && c <= '9'));
+    }
 public:
-    Tokenizer(string, bool);
-    vector<Text_token> scan();
-    string text;
+    Tokenizer(const std::string &, const bool &);
+    std::vector<Text_token> scan();
+    inline const std::string & getText() const {
+        return text;
+    }
+    inline std::string & getText() {
+        return text;
+    }
 };
 
-#endif /* Tokenizer_h */

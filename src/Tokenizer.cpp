@@ -1,61 +1,47 @@
-//
-//  Tokenizer.cpp
-//  compiler
-//
-//  Created by 牛仁鹏 on 15/12/20.
-//  Copyright © 2015年 牛仁鹏. All rights reserved.
-//
-
-#include "Tokenizer.h"
 #include <fstream>
-#include <cstdio>
 #include <iostream>
 #include <cstdlib>
-Tokenizer::Tokenizer(string path_, bool isAql) {
-    path = path_;
-    isAQL = isAql;
-}
-vector<Text_token> Tokenizer::scan() {
-	FILE *file = fopen(path.c_str(), "r");
-    if (file == NULL) {
-        cout << "error, wrong path" << endl;
+#include "Tokenizer.h"
+
+Tokenizer::Tokenizer(const std::string & path_, const bool & isAql) :
+    path(path_), isAQL(isAql) { }
+
+std::vector<Text_token> Tokenizer::scan() {
+    std::ifstream file(path.c_str());
+    if (!file.is_open()) {
+        std::cerr << "error, wrong path" << std::endl;
         exit(1);
     }
+
     char tmp;
-    string str;
+    std::string str;
     int pos = 0;
-    while ((tmp = fgetc(file)) != EOF) {
+    while (file.get(tmp)) {
         if (isAQL && tmp == '/') {
-            str = "";
-            tokens.push_back(Text_token("/", pos-1, pos));
+            str.clear();
+            tokens.push_back(Text_token("/", pos - 1, pos));
             pos++;
-            while ((tmp = fgetc(file)) != '/') {
-                str += tmp;
-                pos++;
-            }
+            for  (file.get(tmp); tmp != '/'; file.get(tmp), ++pos)
+                str.push_back(tmp);
         }
-        text += tmp;
+        text.push_back(tmp);
         if (isBlock(tmp)) {
             if (str.length() != 0) {
-                tokens.push_back(Text_token(str, pos-(int)str.length(), pos));
-                str = "";
+                tokens.push_back(Text_token(str, pos-str.length(), pos));
+                str.clear();
             }
             if (!(tmp == ' ' || tmp == '\n'
                 || tmp == '\t' || tmp == '\r')) {
-                str += tmp;
-                tokens.push_back(Text_token(str, pos, pos+1));
-                str = "";
+                str.push_back(tmp);
+                tokens.push_back(Text_token(str, pos, pos + 1));
+                str.clear();
             }
         } else {
             str += tmp;
-        }
-        
-        pos++;
+        }       
+        ++pos;
     }
+    file.close();
     return tokens;
 }
-bool Tokenizer::isBlock(char c) {
-    return !(((c >= 'a' && c <= 'z')  ||
-              (c >= 'A' && c <= 'Z')) ||
-              (c >= '0' && c <= '9'));
-}
+

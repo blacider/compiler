@@ -1,19 +1,12 @@
-//
-//  testLexer.cpp
-//  compiler
-//
-//  Created by 牛仁鹏 on 15/12/21.
-//  Copyright © 2015年 牛仁鹏. All rights reserved.
-//
-
 #include <stdio.h>
-#include "Lexer.h"
 #include <iostream>
+#include "Lexer.h"
+
 int main(int argc, const char * argv[]) {
     Lexer lexer("../dataset/PerLoc.aql");
-    vector<Token> x = lexer.scan();
+    std::vector<Token> x = lexer.scan();
     for (int i = 0; i < x.size(); i++) {
-        cout << x[i].value
+        std::cout << x[i].value
         << ":"
         << x[i].type
         << "("
@@ -21,7 +14,7 @@ int main(int argc, const char * argv[]) {
         << ","
         << x[i].to
         << ")"
-        << endl;
+        << std::endl;
     }
     return 0;
 }

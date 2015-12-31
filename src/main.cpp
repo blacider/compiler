@@ -1,16 +1,8 @@
-//
-//  main.cpp
-//  compiler
-//
-//  Created by 牛仁鹏 on 15/12/30.
-//  Copyright © 2015年 牛仁鹏. All rights reserved.
-//
-
-#include <stdio.h>
+#include <cstdio>
 #include "Tokenizer.h"
 #include "Parser.h"
 int main(int argc, const char * argv[]) {
-	cout << endl << argc << endl;
+    std::cout << std::endl << argc << std::endl;
 	if (argc == 1) {
 		Tokenizer tokenizer("../dataset/weather/weather.input", false);//输入文本
     	Parser parser("../dataset/weather.aql", tokenizer);//aql 文件，输入文本的 tokenizer
@@ -31,10 +23,11 @@ int main(int argc, const char * argv[]) {
                 Parser parser("../dataset/weather.aql", tokenizer);//aql 文件，输入文本的 tokenizer
                 parser.program();
 		} else {
-			cout << "wrong argument 2!" << endl;
+            std::cout << "wrong argument 2!" << std::endl;
 		}
 	} else {
-		cout << "wrong argument muti!" << endl;
+        std::cout << "wrong argument muti!" << std::endl;
 	}
     return 0;
 }
+

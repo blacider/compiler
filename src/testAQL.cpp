@@ -1,11 +1,3 @@
-//
-//  testAQL.cpp
-//  compiler
-//
-//  Created by 牛仁鹏 on 15/12/22.
-//  Copyright © 2015年 牛仁鹏. All rights reserved.
-//
-
 #include <stdio.h>
 #include "AQL.h"
 #include <iostream>
@@ -15,7 +7,7 @@
 int main() {
     //tokennizer
     Tokenizer tokenizer("../dataset/perloc/PerLoc.input", false);
-    vector<Text_token> text_tokens = tokenizer.scan();
+    std::vector<Text_token> text_tokens = tokenizer.scan();
     //测试 extract_regex
     /*
      create view cap as
@@ -25,11 +17,11 @@ int main() {
      from Document D;
      */
     View cap("cap");
-    vector<int> groups;
+    std::vector<int> groups;
     groups.push_back(0);
-    vector<string> column_names;
+    std::vector<std::string> column_names;
     column_names.push_back("Cap");
-    string text = tokenizer.text;
+    std::string text = tokenizer.getText();
     cap.extract_regex("[A-Z][a-z]*", groups, column_names, text);
     cap.output("");
     //测试 extract_regex
@@ -57,10 +49,10 @@ int main() {
       from cap c;
      */
     View perloc("perloc");
-    vector<string> column_names2;
+    std::vector<std::string> column_names2;
     column_names2.push_back("col1");
-    vector<Column> columns2;
-    columns2.push_back(cap.columns[0]);
+    std::vector<Column> columns2;
+    columns2.push_back(cap.getColumns()[0]);
     perloc.select(columns2, column_names2);
 	perloc.output("");
     //测试 extract_pattern
@@ -73,13 +65,13 @@ int main() {
      from cat c, loc l;
      */
     View pl("pl");
-    vector<Atom> atoms;
+    std::vector<Atom> atoms;
     atoms.push_back(Atom(
                          COLUMN,
                          0,
                          0,
                          "",
-                         cap.columns[0]
+                         cap.getColumns()[0]
                     ));
     atoms.push_back(Atom(
                          REG,
@@ -93,10 +85,10 @@ int main() {
                          0,
                          0,
                          "",
-                         loc.columns[0]
+                         loc.getColumns()[0]
                         ));
-    vector<int> groups_;
-    vector<string> names(1, "123");
+    std::vector<int> groups_;
+    std::vector<std::string> names(1, "123");
     groups_.push_back(0);
     groups_.push_back(atoms.size());
     
@@ -108,3 +100,4 @@ int main() {
                             );
     pl.output("");
 }
+

@@ -2,3 +2,5 @@
 *.output
 *.out
 *~
+cpplint.py
+
