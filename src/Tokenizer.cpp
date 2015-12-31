@@ -1,4 +1,6 @@
 #include <fstream>
+#include <map>
+#include <vector>
 #include <iostream>
 #include <cstdlib>
 #include "Tokenizer.h"
@@ -38,7 +40,7 @@ std::vector<Text_token> Tokenizer::scan() {
             }
         } else {
             str += tmp;
-        }       
+        }
         ++pos;
     }
     file.close();

@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <vector>
+#include <string>
 #include "Tokenizer.h"
 
 struct Span {
@@ -14,10 +15,10 @@ struct Span {
 struct Column {
     std::string name;
     std::vector<Span> spans;
-    Column(const std::string & n = "") : name(n) { }
+    explicit Column(const std::string & n = "") : name(n) { }
 };
 
-typedef enum{
+typedef enum {
     REG, COLUMN
 } Type_Atom;
 
@@ -33,10 +34,10 @@ struct Atom {
 };
 
 class View {
-private:
+ private:
     std::string name;
     std::vector<Column> columns;
-	void output_frame(const int &, const std::vector<int> &) const;
+    void output_frame(const int &, const std::vector<int> &) const;
     unsigned query(const std::vector<Text_token> &, const unsigned &) const;
     void dfs(
         const std::vector<Atom>::const_iterator &,
@@ -46,9 +47,10 @@ private:
         std::vector<Column> &,
         const std::vector<Text_token> &,
         const std::string &);
-public:
+
+ public:
     Column getColumn(const std::string &);
-    
+
     inline const std::vector<Column> & getColumns() const {
         return columns;
     }
@@ -57,7 +59,7 @@ public:
         return columns;
     }
 
-    View(const std::string & = "");
+    explicit View(const std::string & = "");
     void output(const std::string &) const;
     void extract_regex(
         const std::string &,
@@ -73,6 +75,5 @@ public:
     void select(
         const std::vector<Column> &,
         const std::vector<std::string> &);
-	
 };
 

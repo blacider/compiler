@@ -1,4 +1,6 @@
 #include <cstdio>
+#include <map>
+#include <vector>
 #include <iostream>
 #include <cstdlib>
 #include <string>
@@ -39,7 +41,7 @@ void Parser::select_stmt(const std::string & id) {
         view = from_lists[select_lists[it->second]];
         cols.push_back(views[view].getColumn(it->second));
     }
-    views[id].select(cols, names);   
+    views[id].select(cols, names);
 }
 
 void Parser::select_list() {

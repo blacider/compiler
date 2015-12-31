@@ -1,4 +1,6 @@
-#include <stdio.h>
+#include <cstdio>
+#include <string>
+#include <vector>
 #include <sstream>
 #include "AQL.h"
 
@@ -9,83 +11,83 @@ View::View(const std::string & name_) : name(name_) { }
 
 void View::output(const std::string & x) const {
     std::ios::sync_with_stdio(false);
-	if (x == "")
-		std::cout << "View: " << name << std::endl;
-	else
-		std::cout << "View: " << x << std::endl;
+    if (x == "")
+        std::cout << "View: " << name << std::endl;
+    else
+        std::cout << "View: " << x << std::endl;
 
     std::vector<int> longestEachCol;
 
-	//pre-process
-	int columnsSize = columns.size();
-	int i;
-	int row = 0;
+    // pre-process
+    int columnsSize = columns.size();
+    int i;
+    int row = 0;
     int span_length;
-	bool finish = false;
+    bool finish = false;
     std::stringstream stream;
     std::string string_temp;
-	for (i = 0; i < columnsSize; ++i)
-		longestEachCol.push_back(columns[i].name.size());
-	while (!finish) {
-		finish = true;
-		for (i = 0; i < columnsSize; ++i)
-			if (row < columns[i].spans.size()) {
-				finish = false;
-				span_length =
+    for (i = 0; i < columnsSize; ++i)
+        longestEachCol.push_back(columns[i].name.size());
+    while (!finish) {
+        finish = true;
+        for (i = 0; i < columnsSize; ++i)
+            if (row < columns[i].spans.size()) {
+                finish = false;
+                span_length =
                     columns[i].spans[row].to - columns[i].spans[row].from;
                 stream.str("");
-				string_temp.clear();
-				stream << columns[i].spans[row].from
+                string_temp.clear();
+                stream << columns[i].spans[row].from
                        << columns[i].spans[row].to;
-				string_temp = stream.str();
-				span_length += string_temp.length();
-				span_length += 6;
-				if (span_length > longestEachCol[i])
-					longestEachCol[i] = span_length;
-		    }
-		row++;
-	}
-	output_frame(columnsSize, longestEachCol);
+                string_temp = stream.str();
+                span_length += string_temp.length();
+                span_length += 6;
+                if (span_length > longestEachCol[i])
+                    longestEachCol[i] = span_length;
+            }
+        row++;
+    }
+    output_frame(columnsSize, longestEachCol);
 
-	//output name
+    // output name
     int j;
-	std::cout << "|";
-	for (i = 0; i < columnsSize; ++i) {
-		std::cout << " " << columns[i].name;
-		for (j = longestEachCol[i] - columns[i].name.size() - 1; j > 0; --j)
-			std::cout << " ";
-		std::cout << "|";
-	}
-	std::cout << std::endl;
-	
-	output_frame(columnsSize, longestEachCol);
+    std::cout << "|";
+    for (i = 0; i < columnsSize; ++i) {
+        std::cout << " " << columns[i].name;
+        for (j = longestEachCol[i] - columns[i].name.size() - 1; j > 0; --j)
+            std::cout << " ";
+        std::cout << "|";
+    }
+    std::cout << std::endl;
 
-	finish = false;
-	int rowSize((columnsSize > 0) ? columns[0].spans.size() : 0);
+    output_frame(columnsSize, longestEachCol);
+
+    finish = false;
+    int rowSize((columnsSize > 0) ? columns[0].spans.size() : 0);
     std::stringstream stream_from, stream_to;
     std::string temp_span;
-	for (row = 0; row < rowSize; ++row) {
-		std::cout << "|";
-		finish = true;
-		for (i = 0; i < columnsSize; ++i) {
-			if (row < columns[i].spans.size()) {
-				stream_from.str("");
-				stream_to.str("");
-				string_temp.clear();
-				stream_from << columns[i].spans[row].from;
-				stream_to << columns[i].spans[row].to;
-				temp_span = " " + columns[i].spans[row].value + ":(" +
+    for (row = 0; row < rowSize; ++row) {
+        std::cout << "|";
+        finish = true;
+        for (i = 0; i < columnsSize; ++i) {
+            if (row < columns[i].spans.size()) {
+                stream_from.str("");
+                stream_to.str("");
+                string_temp.clear();
+                stream_from << columns[i].spans[row].from;
+                stream_to << columns[i].spans[row].to;
+                temp_span = " " + columns[i].spans[row].value + ":(" +
                             stream_from.str() + "," + stream_to.str() +")";
-				std::cout << temp_span;
-				for (j = 0; j < longestEachCol[i] - temp_span.size(); ++j)
-					std::cout << " ";
-			}
-			std::cout << "|";
-		}
-		std::cout << std::endl;
-	}
-	output_frame(columnsSize, longestEachCol);
-	std::cout << rowSize << " rows in set" << std::endl << std::endl;
+                std::cout << temp_span;
+                for (j = 0; j < longestEachCol[i] - temp_span.size(); ++j)
+                    std::cout << " ";
+            }
+            std::cout << "|";
+        }
+        std::cout << std::endl;
+    }
+    output_frame(columnsSize, longestEachCol);
+    std::cout << rowSize << " rows in set" << std::endl << std::endl;
 
     std::ios::sync_with_stdio(true);
 }
@@ -122,13 +124,13 @@ void View::select(const std::vector<Column> & columns_,
 
 void View::output_frame(const int & columnsSize,
                         const std::vector<int> & longestEachCol) const {
-	int i, j;
+    int i, j;
 
-	//print kuangtu
-	for (i = 0; i < columnsSize; ++i) {
-		std::cout << '+';
-		for (j = 0; j < longestEachCol[i]; ++j)
-			std::cout << '-';
+    // print kuangtu
+    for (i = 0; i < columnsSize; ++i) {
+        std::cout << '+';
+        for (j = 0; j < longestEachCol[i]; ++j)
+            std::cout << '-';
     }
     std::cout << '+' << std::endl;
 }
@@ -157,7 +159,7 @@ void View::extract_pattern(
                 Atom(COLUMN, i->interval_from, i->interval_to, "",
                     temp.columns.front()) );
         }
-    
+
     std::vector<Column> newCols;
     for (std::vector<std::string>::const_iterator i = column_names.begin();
          i != column_names.end();
@@ -165,7 +167,7 @@ void View::extract_pattern(
         newCols.push_back(Column(*i));
     std::vector<Span> s;
     dfs(cols.begin(), cols.end(), s, groups, newCols, tokens, text);
-    
+
     for (std::vector<Column>::const_iterator i = newCols.begin();
          i != newCols.end();
          ++i)

@@ -1,4 +1,6 @@
 #include <cstdio>
+#include <string>
+#include <vector>
 #include "Lexer.h"
 #include "Tokenizer.h"
 

@@ -3,6 +3,7 @@
 #include <map>
 #include <string>
 #include <sstream>
+#include <vector>
 #include "Lexer.h"
 #include "AQL.h"
 
@@ -15,13 +16,13 @@ inline int Number(const std::string & x) {
 }
 
 class Parser {
-public:
+ public:
     Parser(const std::string &, Tokenizer);
-        //第一个是 aql 文件 path，第二个是文本 text
+        // 第一个是 aql 文件 path，第二个是文本 text
     void error(const std::string &);
     void program();
 
-private:
+ private:
     std::vector<Text_token> Text_tokens;
     std::map<std::string, View> views;
     std::vector<Token> tokens;
@@ -32,13 +33,13 @@ private:
     std::vector<std::string> select_items;
     std::vector<int> groups;
     std::vector<int> groups_pattern;
-    std::vector< std::vector<int> > groups_paren;//捕获块
+    std::vector< std::vector<int> > groups_paren;   // 捕获块
     std::vector<std::string> col_names;
     std::vector<Atom> atoms;
     std::vector<std::string> col;
     std::map<std::string, std::string> cols;
     int look, end;
-    //parser
+    // parser
     inline void move() {
         ++look;
     }
@@ -48,7 +49,7 @@ private:
         else
             error("syntax error");
     }
-    //aql
+    // aql
     inline void aql_stmt() {
         if (tokens[look].type == CREATE)
             create_stmt();
@@ -66,7 +67,7 @@ private:
         view_stmt(id);
         match(SEMICOLON);
     }
-    
+
     inline void view_stmt(const std::string & id) {
         if (tokens[look].type == SELECT)
             select_stmt(id);
@@ -97,7 +98,7 @@ private:
         return "";
     }
 
-    //Select Statement
+    // Select Statement
     void select_list();
     void from_list();
 
@@ -124,7 +125,7 @@ private:
             aliass[id2] = id2;
     }
 
-    //Extract Statement--regular
+    // Extract Statement--regular
     void extract_spec(const std::string &);
     void regex_spec(const std::string &);
 
@@ -164,7 +165,7 @@ private:
         col_names.push_back(id);
     }
 
-    //Extract Statement--pattern
+    // Extract Statement--pattern
     inline void pattern_spec(const std::string & id) {
         match(PATTERN);
         groups_pattern.clear();

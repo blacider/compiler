@@ -7,13 +7,13 @@ typedef enum {
     CREATE, VIEW, AS, OUTPUT, SELECT, FROM, EXTRACT, REGEX,
     ON, RETURN, GROUP, AND, TOKEN, PATTERN,
     DOT,
-    COMMA,// , 逗号
-    SEMICOLON, //;　分号
-    OPENPAREN, CLOSEPAREN, //()　圆括号
-    LESSTHAN, GREATETHAN, // <>
-    OPENBRACE, CLOSEBRACE, //{} 花括号
-    ERROR ,// 错误类型
-    REGEX_ ,// 正则表达式
+    COMMA,  // , 逗号
+    SEMICOLON,  //;　分号
+    OPENPAREN, CLOSEPAREN,  //()　圆括号
+    LESSTHAN, GREATETHAN,   // <>
+    OPENBRACE, CLOSEBRACE,  //{} 花括号
+    ERROR ,     // 错误类型
+    REGEX_ ,    // 正则表达式
     ID, NUM
 } Type;
 
@@ -26,11 +26,12 @@ struct Token {
 };
 
 class Lexer {
-private:
+ private:
     std::vector<Token> tokens;
     std::vector<Text_token> text_tokens;
-public:
-    Lexer(const std::string &);
+
+ public:
+    explicit Lexer(const std::string &);
     std::vector<Token> scan();
     Type isKey(const Text_token &) const;
     inline Type idOrNum(const Text_token & x) const {

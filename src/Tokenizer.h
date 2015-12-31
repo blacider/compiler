@@ -11,7 +11,7 @@ struct Text_token {
 };
 
 class Tokenizer {
-private:
+ private:
     bool isAQL;
     std::vector<Text_token> tokens;
     std::string path, text;
@@ -20,7 +20,8 @@ private:
                 (c >= 'A' && c <= 'Z')) ||
                 (c >= '0' && c <= '9'));
     }
-public:
+
+ public:
     Tokenizer(const std::string &, const bool &);
     std::vector<Text_token> scan();
     inline const std::string & getText() const {
