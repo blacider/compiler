@@ -1,0 +1,14 @@
+牛仁鹏：
+AQL select
+AQL extract regex
+parser
+头文件 以及 makefile readme.md
+叶祥俊：
+AQL output
+tokenizer
+lexer
+寻找测试文章和写测试代码
+彭勃：
+AQL extract pattern
+程序优化
+代码风格
