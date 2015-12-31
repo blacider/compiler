@@ -63,7 +63,8 @@ private:
         std::vector<Span> &,
         const std::vector<int> &,
         std::vector<Column> &,
-        const std::vector<Text_token> &
+        const std::vector<Text_token> &,
+        const std::string &
     );
 public:
     Column getColumn(string);

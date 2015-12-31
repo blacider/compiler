@@ -195,7 +195,7 @@ void View::extract_pattern(
          )
         newCols.push_back(Column(*i));
     std::vector<Span> s;
-    dfs(cols.begin(), cols.end(), s, groups, newCols, tokens);
+    dfs(cols.begin(), cols.end(), s, groups, newCols, tokens, text);
     
     for (
          std::vector<Column>::const_iterator i = newCols.begin();
@@ -211,10 +211,11 @@ void View::dfs(
                std::vector<Span> & deque,
                const std::vector<int> & groups,
                std::vector<Column> & newCols,
-               const std::vector<Text_token> & tokens
+               const std::vector<Text_token> & tokens,
+               const std::string & text
                ) {
     if (now == end) {
-        unsigned p, q, k;
+        unsigned p, q, k, h;
         for (unsigned i = 0; i < newCols.size(); ++i) {
             newCols[i].spans.push_back(
                                        Span(
@@ -227,8 +228,13 @@ void View::dfs(
                 if (j > groups[i << 1]) {
                     q = query(tokens, deque[j-1].to - 1);
                     p = query(tokens, deque[j].from);
-                    for (k = q + 1; k < p; ++k)
+                    for (k = q + 1; k < p; ++k) {
+                        for (h = tokens[k-1].to; h < tokens[k].from; ++h)
+                            newCols[i].spans.back().value.push_back(text[h]);
                         newCols[i].spans.back().value += tokens[k].value;
+                    }
+                    for (h = tokens[p-1].to; h < tokens[p].from; ++h)
+                        newCols[i].spans.back().value.push_back(text[h]);
                 }
                 newCols[i].spans.back().value += deque[j].value;
             }
@@ -249,7 +255,7 @@ void View::dfs(
                 && p - q - 1 <= (now - 1)->interval_to
                 ) {
                 deque.push_back(*i);
-                dfs(now + 1, end, deque, groups, newCols, tokens);
+                dfs(now + 1, end, deque, groups, newCols, tokens, text);
                 deque.pop_back();
             }
         }
