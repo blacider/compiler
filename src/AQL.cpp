@@ -107,7 +107,7 @@ void View::output(string x) {
 		std::cout << endl;
 	}
 	output_frame(columnsSize, longestEachCol);
-	std::cout << rowSize << " rows in set" << endl;
+	std::cout << rowSize << " rows in set" << endl << endl;
 }
 void View::extract_regex(string regex,
                          vector<int> groups,
