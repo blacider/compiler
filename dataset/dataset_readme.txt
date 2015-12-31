@@ -1,4 +1,2 @@
-perloc数据是很简单的, 可以用来简单的测试
-
-关于revenue的数据，在aql中创建的其中两个view：一个RevenueAndDivision，另一个RevenueAndDivision2。
-实际上应该合成一个view的，但是因为本子集的功能有限，针对不同的pattern但同一种提取信息，只好分开创建view并提取。
+weather.input 和weather2.input是同一个新闻两个不同的报社的报道
+aql是为了获取数字，单位，地点，数据。数据是数字和单位的结合

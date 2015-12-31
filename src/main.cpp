@@ -26,6 +26,10 @@ int main(int argc, const char * argv[]) {
     		Tokenizer tokenizer("../dataset/revenue/Revenue.input", false);//输入文本
     		Parser parser("../dataset/Revenue.aql", tokenizer);//aql 文件，输入文本的 tokenizer
     		parser.program();
+                } else if (argv[1][0] == '3') {
+                Tokenizer tokenizer("../dataset/weather/weather2.input", false);//输入文本
+                Parser parser("../dataset/weather.aql", tokenizer);//aql 文件，输入文本的 tokenizer
+                parser.program();
 		} else {
 			cout << "wrong argument 2!" << endl;
 		}
