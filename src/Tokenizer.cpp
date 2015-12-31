@@ -11,8 +11,9 @@
 #include <cstdio>
 #include <iostream>
 #include <cstdlib>
-Tokenizer::Tokenizer(string path_) {
+Tokenizer::Tokenizer(string path_, bool isAql) {
     path = path_;
+    isAQL = isAql;
 }
 vector<Text_token> Tokenizer::scan() {
 	FILE *file = fopen(path.c_str(), "r");
@@ -24,6 +25,15 @@ vector<Text_token> Tokenizer::scan() {
     string str;
     int pos = 0;
     while ((tmp = fgetc(file)) != EOF) {
+        if (isAQL && tmp == '/') {
+            str = "";
+            tokens.push_back(Text_token("/", pos-1, pos));
+            pos++;
+            while ((tmp = fgetc(file)) != '/') {
+                str += tmp;
+                pos++;
+            }
+        }
         text += tmp;
         if (isBlock(tmp)) {
             if (str.length() != 0) {

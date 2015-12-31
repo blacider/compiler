@@ -10,7 +10,7 @@
 #include <iostream>
 #include "Tokenizer.h"
 int main(int argc, const char * argv[]) {
-    Tokenizer tokenizer("../dataset/PerLoc.aql");
+    Tokenizer tokenizer("../dataset/PerLoc.aql", true);
     vector<Text_token> x = tokenizer.scan();
     for (int i = 0; i < x.size(); i++) {
         cout << x[i].value

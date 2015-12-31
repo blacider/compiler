@@ -66,8 +66,10 @@ private:
         const std::vector<Text_token> &
     );
 public:
+    Column getColumn(string);
     vector<Column> columns;
     View(string name);
+    View();
     void output(string);
     void extract_regex(string regex,
                        vector<int> groups,

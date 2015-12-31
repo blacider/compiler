@@ -14,7 +14,7 @@
 
 int main() {
     //tokennizer
-    Tokenizer tokenizer("../dataset/perloc/PerLoc.input");
+    Tokenizer tokenizer("../dataset/perloc/PerLoc.input", false);
     vector<Text_token> text_tokens = tokenizer.scan();
     //测试 extract_regex
     /*

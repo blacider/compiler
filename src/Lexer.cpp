@@ -13,7 +13,7 @@ string keyword[] = {
 };
 #include "Tokenizer.h"
 Lexer::Lexer(string path) {
-    Tokenizer *tokenizer = new Tokenizer(path);
+    Tokenizer *tokenizer = new Tokenizer(path, true);
     text_tokens = tokenizer->scan();
 }
 vector<Token> Lexer::scan() {
