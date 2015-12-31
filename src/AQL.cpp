@@ -61,9 +61,9 @@ void View::output(string x) {
 	i = 0;
 	std::cout << "|";
 	while (i < columnsSize) {
-		std::cout << columns[i].name;
+		std::cout << " " << columns[i].name;
 		int j = 0;
-		while (j < longestEachCol[i] - columns[i].name.size()) {
+		while (j < longestEachCol[i] - columns[i].name.size()-1) {
 			std::cout << " ";
 			j++;
 		}
